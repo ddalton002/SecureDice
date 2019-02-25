@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Secure Dice</string>
+    <string name="home_word_list">Select a Word List</string>
+    <string name="home_word_count">Word Count</string>
+    <string name="home_special_reqs">Special Requirements</string>
+    <string name="home__word_list_default">Pick a word list</string>
+    <string name="home_word_count_default">6</string>
+    <string name="home_import_button">Import List</string>
+    <string name="home_generate_phrase_button">Generate Passphrase</string>
+    <string name="special_reqs_char">Special Characters?</string>
+    <string name="special_reqs_numbers">Numbers?</string>
+    <string name="confirm_button">OK</string>
+    <string name="home_special_chars">Special Characters</string>
+    <string name="home_special_numbers">Numbers</string>
+    <string name="import_select_file">Select File</string>
+    <string name="import_import_list">Import</string>
+    <string name="import_success">List Imported</string>
+    <string name="import_failure">Error Importing List</string>
+    <string name="import_list_default">Select File From Destination</string>
+    <string name="generate_done">Generate</string>
+</resources>
