@@ -13,12 +13,12 @@ public class ImportListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_import_list);
     }
 
-    addButton.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("*/*");
-            startActivityForResult(intent, PICKFILE_RESULT_CODE);
-        }
-    }
+    //addButton.setOnClickListener(new View.OnClickListener() {
+        //public void onClick(View v) {
+            //Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            //intent.setType("*/*");
+            //startActivityForResult(intent, PICKFILE_RESULT_CODE);
+        //}
+    //}
 }
 

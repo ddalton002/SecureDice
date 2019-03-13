@@ -51,13 +51,13 @@
         android:lineSpacingExtra="8sp"
         android:text="@string/home_word_count"
         android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/totalWords"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/totalWords"
         android:layout_width="51dp"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
