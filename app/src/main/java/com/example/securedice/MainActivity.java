@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 //import java.util.Random;
 //import java.util.concurrent.ThreadLocalRandom;
@@ -15,6 +16,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void onCheckboxClicked(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.check_char:
+                if (checked) {
+
+                }
+                else {
+
+                }
+                break;
+                case R.id.check_num:
+                if (checked) {
+
+                }
+                else {
+
+                }
+                break;
+        }
     }
 
     /** Called when the user taps the Generate button */

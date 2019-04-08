@@ -135,10 +135,12 @@
         android:layout_marginRight="8dp"
         android:text="@string/home_special_chars"
         android:textSize="14sp"
+        android:onClick="onCheckboxClicked"
         app:layout_constraintEnd_toStartOf="@+id/check_num"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        />
 
     <CheckBox
         android:id="@+id/check_num"
@@ -151,6 +153,7 @@
         android:layout_marginRight="48dp"
         android:text="@string/home_special_numbers"
         android:textSize="14sp"
+        android:onClick="onCheckboxClicked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/check_char"
