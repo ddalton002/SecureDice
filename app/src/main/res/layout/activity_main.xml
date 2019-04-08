@@ -53,6 +53,7 @@
         android:textSize="36sp"
         app:layout_constraintEnd_toStartOf="@+id/totalWords"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
@@ -68,7 +69,6 @@
         android:ems="10"
         android:hint="@string/home_word_count_default"
         android:inputType="number"
-        android:text="@string/home_word_count_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView3"

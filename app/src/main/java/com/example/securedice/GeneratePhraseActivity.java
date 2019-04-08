@@ -15,18 +15,18 @@ public class GeneratePhraseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_phrase);
-        //Intent intent = getIntent();
-        //String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        //int words = Integer.valueOf(message);
-        int words = 4;
+        Bundle extras = getIntent().getExtras();
+        String totalWords = extras.getString("WordCount");
+        int words = Integer.parseInt(totalWords);
         final TextView outputList = (TextView) findViewById(R.id.listOutput);
         outputList.setText(returnPhrase(words));
-        //outputList.setText(message);
     }
 
     public void generatePhrase(View view) {
+        Bundle extras = getIntent().getExtras();
+        String totalWords = extras.getString("WordCount");
+        int words = Integer.parseInt(totalWords);
         final TextView outputList = (TextView) findViewById(R.id.listOutput);
-        int words = 4;
         outputList.setText(returnPhrase(words));
     }
 
@@ -37,13 +37,49 @@ public class GeneratePhraseActivity extends AppCompatActivity {
 
     String returnPhrase(int words) {
         HashMap<Integer, HashMap<Integer, HashMap<Integer,String>>> list = wordList();
-        //int totalWords = words;
         String phrase = "";
         for (int i = 0; i < words; i++) {
             int index1 = (randomGenerator(10) + 1);
             int index2 = (randomGenerator(20) + 1);
             int index3 = (randomGenerator(20) + 1);
             phrase += list.get(index1).get(index2).get(index3);
+        }
+        String character = "";
+        int specChar = randomGenerator(8);
+        if (specChar == 0) {
+            character = "!";
+        } else if (specChar == 1) {
+            character = "@";
+        } else if (specChar == 2) {
+            character = "#";
+        } else if (specChar == 3) {
+            character = "$";
+        } else if (specChar == 4) {
+            character = "%";
+        } else if (specChar == 5) {
+            character = "^";
+        } else if (specChar == 6) {
+            character = "&";
+        } else {
+            character = "*";
+        }
+        int special = randomGenerator(2);
+        if (special == 0) {
+            character += phrase;
+            phrase = character;
+        } else {
+            phrase += "@";
+        }
+        int num = randomGenerator(2);
+        if (num == 0) {
+            int number = (randomGenerator(9) + 1);
+            String add = Integer.toString(number);
+            add += phrase;
+            return add;
+        } else {
+            int number = (randomGenerator(9) + 1);
+            String add = Integer.toString(number);
+            phrase += add;
         }
         return phrase;
     }
@@ -1003,7 +1039,7 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         actualList37.put(19, "Birth");
         actualList37.put(20, "Just");
         actualList38.put(1, "Neimoidian");
-        actualList38.put(2, "At-sts");
+        actualList38.put(2, "AT-ST");
         actualList38.put(3, "Starting");
         actualList38.put(4, "Assigned");
         actualList38.put(5, "Disguise");
@@ -2061,7 +2097,7 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         actualList90.put(17, "Rear");
         actualList90.put(18, "Rathtar");
         actualList90.put(19, "Fortuna");
-        actualList90.put(20, "At-st");
+        actualList90.put(20, "AT-ST");
         actualList91.put(1, "Designation");
         actualList91.put(2, "Maintained");
         actualList91.put(3, "Serves");
@@ -3080,7 +3116,7 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         actualList141.put(16, "March");
         actualList141.put(17, "Emergency");
         actualList141.put(18, "Demands");
-        actualList141.put(19, "At-ats");
+        actualList141.put(19, "AT-AT");
         actualList141.put(20, "Big");
         actualList142.put(1, "Bid");
         actualList142.put(2, "Traps");
@@ -3968,7 +4004,7 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         actualList186.put(4, "Scatter");
         actualList186.put(5, "Wild");
         actualList186.put(6, "Asperations");
-        actualList186.put(7, "At-at");
+        actualList186.put(7, "AT-AT");
         actualList186.put(8, "Instantly");
         actualList186.put(9, "Maul");
         actualList186.put(10, "Piloting");
