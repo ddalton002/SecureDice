@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+
+import java.util.ArrayList;
 //import java.util.Random;
 //import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends AppCompatActivity {
     //public static final String EXTRA_MESSAGE = "wordCount";
+    String flags = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
-
         switch(view.getId()) {
             case R.id.check_char:
                 if (checked) {
-
-                }
-                else {
-
+                    flags += "Char";
+                    //flags.add("Char");
                 }
                 break;
-                case R.id.check_num:
+            case R.id.check_num:
                 if (checked) {
-
-                }
-                else {
-
+                    flags += "Num";
+                    //flags.add("Num");
                 }
                 break;
         }
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         EditText totalWords = (EditText)findViewById(R.id.totalWords);
         String word = totalWords.getText().toString();
         intent.putExtra("WordCount", word);
+        intent.putExtra("Flags", flags);
         startActivity(intent);
     }
 

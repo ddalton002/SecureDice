@@ -7,27 +7,43 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GeneratePhraseActivity extends AppCompatActivity {
+    //ArrayList<String> phraseList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //phraseList.clear();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_phrase);
         Bundle extras = getIntent().getExtras();
         String totalWords = extras.getString("WordCount");
+        String flags = extras.getString("Flags");
         int words = Integer.parseInt(totalWords);
+        /*
+        for (int i = 0; i < 5; i ++) {
+        phraseList.add(returnPhrase(words, flags));
+        }
+        */
         final TextView outputList = (TextView) findViewById(R.id.listOutput);
-        outputList.setText(returnPhrase(words));
+        outputList.setText(returnPhrase(words, flags));
     }
 
     public void generatePhrase(View view) {
+        //phraseList.clear();
         Bundle extras = getIntent().getExtras();
         String totalWords = extras.getString("WordCount");
+        String flags = extras.getString("Flags");
         int words = Integer.parseInt(totalWords);
+        /*
+        for (int i = 0; i < 5; i ++) {
+            phraseList.add(returnPhrase(words, flags));
+        }
+        */
         final TextView outputList = (TextView) findViewById(R.id.listOutput);
-        outputList.setText(returnPhrase(words));
+        outputList.setText(returnPhrase(words, flags));
     }
 
     int randomGenerator(int range) {
@@ -35,7 +51,7 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         return rand.nextInt(range);
     }
 
-    String returnPhrase(int words) {
+    String returnPhrase(int words, String flags) {
         HashMap<Integer, HashMap<Integer, HashMap<Integer,String>>> list = wordList();
         String phrase = "";
         for (int i = 0; i < words; i++) {
@@ -45,41 +61,46 @@ public class GeneratePhraseActivity extends AppCompatActivity {
             phrase += list.get(index1).get(index2).get(index3);
         }
         String character = "";
-        int specChar = randomGenerator(8);
-        if (specChar == 0) {
-            character = "!";
-        } else if (specChar == 1) {
-            character = "@";
-        } else if (specChar == 2) {
-            character = "#";
-        } else if (specChar == 3) {
-            character = "$";
-        } else if (specChar == 4) {
-            character = "%";
-        } else if (specChar == 5) {
-            character = "^";
-        } else if (specChar == 6) {
-            character = "&";
-        } else {
-            character = "*";
+
+        if (flags.equals("CharNum") || flags.equals("Char")) {
+            int specChar = randomGenerator(8);
+            if (specChar == 0) {
+                character = "!";
+            } else if (specChar == 1) {
+                character = "@";
+            } else if (specChar == 2) {
+                character = "#";
+            } else if (specChar == 3) {
+                character = "$";
+            } else if (specChar == 4) {
+                character = "%";
+            } else if (specChar == 5) {
+                character = "^";
+            } else if (specChar == 6) {
+                character = "&";
+            } else {
+                character = "*";
+            }
+            int special = randomGenerator(2);
+            if (special == 0) {
+                character += phrase;
+                phrase = character;
+            } else {
+                phrase += "@";
+            }
         }
-        int special = randomGenerator(2);
-        if (special == 0) {
-            character += phrase;
-            phrase = character;
-        } else {
-            phrase += "@";
-        }
-        int num = randomGenerator(2);
-        if (num == 0) {
-            int number = (randomGenerator(9) + 1);
-            String add = Integer.toString(number);
-            add += phrase;
-            return add;
-        } else {
-            int number = (randomGenerator(9) + 1);
-            String add = Integer.toString(number);
-            phrase += add;
+        if (flags.equals("CharNum") || flags.equals("Num")) {
+            int num = randomGenerator(2);
+            if (num == 0) {
+                int number = (randomGenerator(9) + 1);
+                String add = Integer.toString(number);
+                add += phrase;
+                return add;
+            } else {
+                int number = (randomGenerator(9) + 1);
+                String add = Integer.toString(number);
+                phrase += add;
+            }
         }
         return phrase;
     }
