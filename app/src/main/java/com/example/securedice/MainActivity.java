@@ -7,12 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-//import java.util.Random;
-//import java.util.concurrent.ThreadLocalRandom;
-
 public class MainActivity extends AppCompatActivity {
-    //public static final String EXTRA_MESSAGE = "wordCount";
     String flags = "";
 
     @Override
@@ -27,13 +22,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.check_char:
                 if (checked) {
                     flags += "Char";
-                    //flags.add("Char");
                 }
                 break;
             case R.id.check_num:
                 if (checked) {
                     flags += "Num";
-                    //flags.add("Num");
                 }
                 break;
         }
@@ -42,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user taps the Generate button */
     public void generatePhrase(View view) {
         Intent intent = new Intent(this, GeneratePhraseActivity.class);
-        EditText totalWords = (EditText)findViewById(R.id.totalWords);
+        EditText totalWords = findViewById(R.id.totalWords);
         String word = totalWords.getText().toString();
         intent.putExtra("WordCount", word);
         intent.putExtra("Flags", flags);

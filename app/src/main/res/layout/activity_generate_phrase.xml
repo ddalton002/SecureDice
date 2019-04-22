@@ -24,9 +24,6 @@
 
     <TextView
         android:id="@+id/listOutput"
-        android:padding="10dip"
-        android:textSize="16dip"
-        android:textStyle="bold"
         android:layout_width="329dp"
         android:layout_height="506dp"
         android:layout_marginStart="8dp"
@@ -35,23 +32,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Phrase"
+        android:padding="10dip"
+        android:textSize="16dip"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/phraseList"
-        android:layout_width="395dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/listOutput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -1,49 +1,42 @@
 package com.example.securedice;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class GeneratePhraseActivity extends AppCompatActivity {
-    //ArrayList<String> phraseList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //phraseList.clear();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_phrase);
         Bundle extras = getIntent().getExtras();
         String totalWords = extras.getString("WordCount");
         String flags = extras.getString("Flags");
         int words = Integer.parseInt(totalWords);
-        /*
+        String phrase = "";
         for (int i = 0; i < 5; i ++) {
-        phraseList.add(returnPhrase(words, flags));
+            phrase += (returnPhrase(words, flags) + "\n\n");
         }
-        */
-        final TextView outputList = (TextView) findViewById(R.id.listOutput);
-        outputList.setText(returnPhrase(words, flags));
+        final TextView outputList = findViewById(R.id.listOutput);
+        outputList.setText(phrase);
     }
 
     public void generatePhrase(View view) {
-        //phraseList.clear();
         Bundle extras = getIntent().getExtras();
         String totalWords = extras.getString("WordCount");
         String flags = extras.getString("Flags");
         int words = Integer.parseInt(totalWords);
-        /*
+        String phrase = "";
         for (int i = 0; i < 5; i ++) {
-            phraseList.add(returnPhrase(words, flags));
+            phrase += (returnPhrase(words, flags) + "\n\n");
         }
-        */
-        final TextView outputList = (TextView) findViewById(R.id.listOutput);
-        outputList.setText(returnPhrase(words, flags));
+        final TextView outputList = findViewById(R.id.listOutput);
+        outputList.setText(phrase);
     }
 
     int randomGenerator(int range) {
