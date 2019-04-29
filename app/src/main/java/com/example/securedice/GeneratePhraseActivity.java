@@ -40,8 +40,6 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String totalWords = extras.getString("WordCount");
         String flags = extras.getString("Flags");
-        String selection = extras.getString("Selection");
-        wordMap = wordList(selection);
         int words = Integer.parseInt(totalWords);
         if (words <= 0) {
             words = 1;
@@ -332,11 +330,11 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         int listIndex = 1;
         try {
             String filename = String.valueOf(selection);
-            if (String.valueOf(filename) == "Game of Thrones") {
+            if (String.valueOf(filename).equals("Game of Thrones")) {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("gameofthrones.txt"))));
-            } else if (String.valueOf(filename) == "Star Trek") {
+            } else if (String.valueOf(filename).equals("Star Trek")) {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("startrek.txt"))));
-            } else if (String.valueOf(filename) == "Harry Poter") {
+            } else if (String.valueOf(filename).equals("Harry Poter")) {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("harrypotter.txt"))));
             } else {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("starwars.txt"))));

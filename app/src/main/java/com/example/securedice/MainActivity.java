@@ -43,10 +43,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             e.printStackTrace();
         }
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.words_array, android.R.layout.simple_spinner_item);
-        //ArrayAdapter<String> adapter = ArrayAdapter.createFromResource(this, R.array.filelist, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
     }
@@ -86,18 +85,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String word = totalWords.getText().toString();
         intent.putExtra("WordCount", word);
         intent.putExtra("Flags", flags);
-        /*String test = "";
-        if (selection == "Star wars") {
-            test = "Cat";
-        } else if (selection == "Star Trek") {
-            test = "Hat";
-        } else if (selection == "Harry Poter") {
-            test = "Rat";
-        } else if (selection == "Game of Thrones") {
-            test = "Fat";
-        } else {
-            test = "Oops";
-        }*/
         intent.putExtra("Selection", selection);
         startActivity(intent);
     }
