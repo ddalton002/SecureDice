@@ -1,10 +1,20 @@
 package com.example.securedice;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -18,10 +28,26 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         String totalWords = extras.getString("WordCount");
         String flags = extras.getString("Flags");
         int words = Integer.parseInt(totalWords);
+        if (words <= 0) {
+            words = 1;
+        }
         String phrase = "";
         for (int i = 0; i < 5; i ++) {
             phrase += (returnPhrase(words, flags) + "\n\n");
         }
+
+        //add test call
+        HashMap<Integer, HashMap<Integer,String>> list = testList();
+        //String phrase = "";
+        //for (int i = 0; i < words; i++) {
+        int index1 = (randomGenerator(5) + 1);
+        int index2 = (randomGenerator(5) + 1);
+        phrase += list.get(index1).get(index2);
+        //}
+        //phrase += String.valueOf(list.size());
+        phrase += String.valueOf(index1);
+        phrase += String.valueOf(index2);
+
         final TextView outputList = findViewById(R.id.listOutput);
         outputList.setText(phrase);
     }
@@ -31,10 +57,26 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         String totalWords = extras.getString("WordCount");
         String flags = extras.getString("Flags");
         int words = Integer.parseInt(totalWords);
+        if (words <= 0) {
+            words = 1;
+        }
         String phrase = "";
         for (int i = 0; i < 5; i ++) {
             phrase += (returnPhrase(words, flags) + "\n\n");
         }
+
+        //add test call
+        HashMap<Integer, HashMap<Integer,String>> list = testList();
+        //String phrase = "";
+        //for (int i = 0; i < words; i++) {
+        int index1 = (randomGenerator(5) + 1);
+        int index2 = (randomGenerator(5) + 1);
+        phrase += list.get(index1).get(index2);
+        phrase += String.valueOf(index1);
+        phrase += String.valueOf(index2);
+        //}
+        //phrase += String.valueOf(list.size());
+
         final TextView outputList = findViewById(R.id.listOutput);
         outputList.setText(phrase);
     }
@@ -96,6 +138,46 @@ public class GeneratePhraseActivity extends AppCompatActivity {
             }
         }
         return phrase;
+    }
+
+    HashMap testList() {
+        HashMap<Integer, HashMap<Integer,String>> wordList = new HashMap<>();
+        HashMap<Integer,String> subList1 = new HashMap<>();
+        HashMap<Integer,String> subList2 = new HashMap<>();
+        HashMap<Integer,String> subList3 = new HashMap<>();
+        HashMap<Integer,String> subList4 = new HashMap<>();
+        HashMap<Integer,String> subList5 = new HashMap<>();
+        BufferedReader reader;
+        int listNum = 1;
+        int listIndex = 1;
+        try {
+            reader = new BufferedReader((new InputStreamReader(getAssets().open("test.txt"))));
+            String word;
+            //String listname = "subList";
+            while((word = reader.readLine()) != null) {
+                //listname.put(listIndex, word);
+                if (listIndex <= 5) {
+                    subList1.put(listIndex, word);
+                } else if (listIndex > 5 && listIndex < 11) {
+                    subList2.put((listIndex - 5), word);
+                } else if (listIndex > 10 && listIndex < 16) {
+                    subList3.put((listIndex - 10), word);
+                } else if (listIndex > 15 && listIndex< 21) {
+                    subList4.put((listIndex - 15), word);
+                } else {
+                    subList5.put((listIndex - 20), word);
+                }
+                listIndex += 1;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        wordList.put(1, subList1);
+        wordList.put(2, subList2);
+        wordList.put(3, subList3);
+        wordList.put(4, subList4);
+        wordList.put(5, subList5);
+        return wordList;
     }
 
     HashMap wordList() {
