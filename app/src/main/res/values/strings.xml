@@ -18,4 +18,10 @@
     <string name="import_failure">Error Importing List</string>
     <string name="import_list_default">Select File From Destination</string>
     <string name="generate_done">Generate</string>
+    <string-array name="words_array">
+        <item>Star Wars</item>
+        <item>Star Trek</item>
+        <item>Harry Potter</item>
+        <item>Game of Thrones</item>
+    </string-array>
 </resources>
