@@ -32,6 +32,31 @@ public class GeneratePhraseActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i ++) {
             phrase += (returnPhrase(words, flags, wordMap) + "\n\n");
         }
+        /*
+        boolean stuff = false;
+        String Hat;
+        if (String.valueOf(selection).equals("Game of Thrones")) {
+            stuff = String.valueOf(selection).equals("Game of Thrones");
+            Hat = String.valueOf(stuff);
+            phrase += Hat;
+            phrase += "GoT";
+        } else if (String.valueOf(selection).equals("Star Trek")) {
+            stuff = String.valueOf(selection).equals("Star Trek");
+            Hat = String.valueOf(stuff);
+            phrase += Hat;
+            phrase += "STK";
+        } else if (String.valueOf(selection).equals("Harry Potter")) {
+            stuff = String.valueOf(selection).equals("Harry Potter");
+            Hat = String.valueOf(stuff);
+            phrase += Hat;
+            phrase += "HP";
+        } else if (String.valueOf(selection).equals("Star Wars")){
+            stuff = String.valueOf(selection).equals("Star Wars");
+            Hat = String.valueOf(stuff);
+            phrase += Hat;
+            phrase += "STW";
+        }*/
+
         final TextView outputList = findViewById(R.id.listOutput);
         outputList.setText(phrase);
     }
@@ -334,7 +359,7 @@ public class GeneratePhraseActivity extends AppCompatActivity {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("gameofthrones.txt"))));
             } else if (String.valueOf(filename).equals("Star Trek")) {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("startrek.txt"))));
-            } else if (String.valueOf(filename).equals("Harry Poter")) {
+            } else if (String.valueOf(filename).equals("Harry Potter")) {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("harrypotter.txt"))));
             } else {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("starwars.txt"))));
