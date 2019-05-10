@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,7 +19,8 @@ import java.nio.channels.FileChannel;
 public class ImportListActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    Uri fileuri = null;
+    String path = "";
+    String file = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +73,8 @@ public class ImportListActivity extends AppCompatActivity {
             if (resultData != null) {
                 uri = resultData.getData();
                 Log.i(TAG, "Uri: " + uri.toString());
-                fileuri = uri;
+                path = uri.getPath();
+                file = uri.toString();
                 //showImage(uri);
             }
         }
@@ -92,6 +95,23 @@ public class ImportListActivity extends AppCompatActivity {
             if (outChannel != null)
                 outChannel.close();
         }
+    }
+
+    public void importFile(View view) {
+        String data = getApplicationInfo().dataDir;
+        //File src = new File(path);
+        //File dst = new File(data);
+        String phrase = path + " and "  + data + " and " + file;
+        final TextView outputList = findViewById(R.id.textView6);
+        outputList.setText(phrase);
+        /*try {
+            copyFile(src,dst);
+            String phrase = path + " "  + data;
+            final TextView outputList = findViewById(R.id.textView6);
+            outputList.setText(phrase);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 }
 
