@@ -51,14 +51,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
         selection = (String) parent.getItemAtPosition(pos);
 
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
         selection = (String) parent.getItemAtPosition(1);
     }
 

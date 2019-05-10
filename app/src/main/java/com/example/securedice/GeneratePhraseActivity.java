@@ -90,6 +90,9 @@ public class GeneratePhraseActivity extends AppCompatActivity {
             int index2 = (randomGenerator(20) + 1);
             int index3 = (randomGenerator(20) + 1);
             phrase += list.get(index1).get(index2).get(index3);
+            //phrase += index1 + " ";
+            //phrase += index2 + " ";
+            //phrase += index3 + " ";
         }
         String character = "";
 
