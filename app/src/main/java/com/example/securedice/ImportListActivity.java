@@ -21,6 +21,9 @@ public class ImportListActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     String path = "";
     String file = "";
+    //String test = "";
+    //File testFile = new File(test);
+    String testPath = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,9 @@ public class ImportListActivity extends AppCompatActivity {
             if (resultData != null) {
                 uri = resultData.getData();
                 Log.i(TAG, "Uri: " + uri.toString());
+                //path = uri.getPath();
+                File testFile = new File(uri.getPath());
+                testPath = testFile.getAbsolutePath();
                 path = uri.getPath();
                 file = uri.toString();
                 //showImage(uri);
@@ -99,19 +105,18 @@ public class ImportListActivity extends AppCompatActivity {
 
     public void importFile(View view) {
         String data = getApplicationInfo().dataDir;
-        //File src = new File(path);
-        //File dst = new File(data);
-        String phrase = path + " and "  + data + " and " + file;
-        final TextView outputList = findViewById(R.id.textView6);
-        outputList.setText(phrase);
-        /*try {
-            copyFile(src,dst);
-            String phrase = path + " "  + data;
+        //String stuff = "/storage/self/primary/Download/test.txt";
+        //String dst = ;
+        File src = new File(testPath);
+        File dst = new File(data);
+        try {
+            String phrase = testPath + " and "  + data + " and " + file;
             final TextView outputList = findViewById(R.id.textView6);
             outputList.setText(phrase);
+            copyFile(src,dst);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
 
