@@ -18,6 +18,8 @@ import java.nio.channels.FileChannel;
 
 public class ImportListActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 1;
+
     private static final String TAG = "MainActivity";
     String path = "";
     String file = "";
@@ -105,9 +107,9 @@ public class ImportListActivity extends AppCompatActivity {
 
     public void importFile(View view) {
         String data = getApplicationInfo().dataDir;
-        //String stuff = "/storage/self/primary/Download/test.txt";
+        String stuff = "/storage/self/primary/Download/test.txt";
         //String dst = ;
-        File src = new File(testPath);
+        File src = new File(stuff);
         File dst = new File(data);
         try {
             String phrase = testPath + " and "  + data + " and " + file;
@@ -117,6 +119,8 @@ public class ImportListActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 

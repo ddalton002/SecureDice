@@ -2,6 +2,7 @@ package com.example.securedice;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +46,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.words_array, android.R.layout.simple_spinner_item);
+        Resources res = getResources();
+        String [] placeholder = res.getStringArray(R.array.words_array);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, placeholder);
+        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.words_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
     }
