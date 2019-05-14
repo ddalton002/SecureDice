@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String flags = "";
@@ -47,7 +50,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         Resources res = getResources();
-        String [] placeholder = res.getStringArray(R.array.words_array);
+        //String [] placeholder = res.getStringArray(R.array.words_array);
+        List<String> placeholder = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.words_array)));
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            if (extras.containsKey("newName")) {
+                String newName = extras.getString("newName");
+                placeholder.add(newName);
+            }
+            if (extras.containsKey("newList")) {
+                String newList = extras.getString("newList");
+            }
+        }
+
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, placeholder);
         //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.words_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);

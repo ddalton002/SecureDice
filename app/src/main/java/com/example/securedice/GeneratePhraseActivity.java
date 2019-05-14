@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.SecureRandom;
@@ -56,7 +58,13 @@ public class GeneratePhraseActivity extends AppCompatActivity {
             phrase += Hat;
             phrase += "STW";
         }*/
-
+        //File[] filelist = getFilesDir().listFiles();
+        //String data = getFilesDir().toString();
+        /*String listofiles = "";
+        for (int i = 0; i < filelist.length; i++) {
+            listofiles = filelist[i].toString() + "/";
+        }
+        phrase += listofiles;*/
         final TextView outputList = findViewById(R.id.listOutput);
         outputList.setText(phrase);
     }
@@ -364,6 +372,10 @@ public class GeneratePhraseActivity extends AppCompatActivity {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("startrek.txt"))));
             } else if (String.valueOf(filename).equals("Harry Potter")) {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("harrypotter.txt"))));
+            } else if (String.valueOf(filename).equals("test.txt")){
+                FileInputStream fis = openFileInput("test.txt");
+                InputStreamReader isr = new InputStreamReader(fis);
+                reader = new BufferedReader(isr);
             } else {
                 reader = new BufferedReader((new InputStreamReader(getAssets().open("starwars.txt"))));
             }
